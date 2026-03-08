@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supraja Srikanth | Software Engineer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.8;
+            color: #e4e4e7;
+            background: #0a0e27;
+            min-height: 100vh;
+            font-size: 18px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 100px;
+            padding-bottom: 50px;
+            border-bottom: 3px solid rgba(99, 102, 241, 0.2);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #a1a1aa;
+            margin-bottom: 5px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .contact-links a {
+            color: #a855f7;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            color: #6366f1;
+            text-decoration: underline;
+        }
+
+        .profile-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .summary-card {
+            background: rgba(39, 39, 42, 0.5);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .summary-card h3 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text {
+        background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        -webkit-text-fill-color: transparent;
+        }
+
+        .summary-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .summary-item .degree,
+        .summary-item .role {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #fafafa;
+            margin-bottom: 8px;
+        }
+
+        .summary-item .institution,
+        .summary-item .company {
+            font-size: 1.05em;
+            color: #a855f7;
+            margin-bottom: 5px;
+        }
+
+        .summary-item .year {
+            font-size: 0.95em;
+            color: #a1a1aa;
+        }
+
+        .section-header {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding-bottom: 20px;
+            border-bottom: 3px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        .timeline-section {
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -57px;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            border: 4px solid #0a0e27;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
+        }
+
+        .period {
+            font-size: 1.05em;
+            color: #a855f7;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-section h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fafafa;
+        }
+
+        .organization {
+            font-size: 1.05em;
+            color: #a1a1aa;
+            margin-bottom: 20px;
+        }
+
+        /* Role tag badges */
+        .role-tag {
+            display: inline-block;
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #a855f7;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 20px;
+            padding: 3px 14px;
+            margin-bottom: 18px;
+            letter-spacing: 0.3px;
+        }
+
+        /* Subsection headers within experience */
+        .exp-subheader {
+            font-size: 1em;
+            font-weight: 700;
+            color: #6366f1;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin: 24px 0 10px;
+        }
+
+        .timeline-section p {
+            color: #d4d4d8;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1em;
+        }
+
+        .timeline-section ul {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .timeline-section li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 13px;
+            color: #d4d4d8;
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .timeline-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .highlight {
+            color: #fafafa;
+            font-weight: 600;
+        }
+
+        .metric {
+            color: #a855f7;
+            font-weight: 700;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #a855f7;
+            text-decoration: none;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #6366f1;
+            text-decoration: underline;
+        }
+
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: rgba(39, 39, 42, 0.5);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a1a1aa;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
+        }
+
+        .project-image img { width: 100%; height: 100%; object-fit: contain; }
+        .project-image video { width: 100%; height: 100%; object-fit: contain; }
+
+        .skills-section { margin-top: 100px; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #a1a1aa;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-category p {
+            color: #d4d4d8;
+            font-size: 1.05em;
+            line-height: 1.9;
+        }
+
+        .contact-section {
+            margin-top: 80px;
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(39, 39, 42, 0.5);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 16px;
+        }
+
+        .contact-section h2 {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-items {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item span {
+            font-size: 1.1em;
+            color: #a1a1aa;
+            font-weight: 600;
+        }
+
+        .contact-item a {
+            color: #a855f7;
+            text-decoration: none;
+            font-size: 1.15em;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 8px;
+        }
+
+        .contact-item a:hover {
+            color: #6366f1;
+            border-color: rgba(99, 102, 241, 0.5);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1200px) {
+            .split-container { grid-template-columns: 1fr; gap: 80px; }
+        }
+
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+            .container { padding: 50px 25px; }
+            h1 { font-size: 2.5em; }
+            .profile-summary { grid-template-columns: 1fr; gap: 20px; }
+            .summary-card { padding: 25px; }
+            .summary-card h3 { font-size: 1.4em; margin-bottom: 20px; }
+            .summary-item { margin-bottom: 20px; padding-bottom: 20px; }
+            .summary-item .degree, .summary-item .role { font-size: 1.05em; }
+            .summary-item .institution, .summary-item .company { font-size: 0.95em; }
+            .summary-item .year { font-size: 0.85em; }
+            .timeline { padding-left: 35px; }
+            .timeline-marker { left: -42px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .project-images { grid-template-columns: 1fr; }
+            .contact-items { gap: 30px; }
+            .contact-section { padding: 40px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Supraja Srikanth</h1>
+            <p class="subtitle">MS Computer Science @ University of Cincinnati</p>
+            <p class="subtitle">Software Engineer building intelligent systems with AI, ML, and scalable infrastructure</p>
+            <div class="contact-links">
+                <a href="mailto:suprajasrikanth872@gmail.com">Email</a>
+                <a href="https://www.linkedin.com/in/suprajasrikanth/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/supraja777/" target="_blank">GitHub</a>
+                <a href="https://medium.com/@suprajasrikanth872" target="_blank">Medium</a>
+            </div>
+            <a href="resume.pdf"  target="_blank" download>
+            <button style="
+                background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+                color: white;
+                border: none;
+                margin-top: 12px;
+                padding: 12px 24px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+            ">
+                Download Resume
+            </button>
+            </a>
+        </header>
+            <div class="summary-card">
+                <h3>Academic Experience</h3>
+                <div class="summary-item">
+                    <div class="degree">Master of Science in Computer Science</div>
+                    <div class="institution">University of Cincinnati, USA</div>
+                    <div class="year">2025 – 2026 | GPA: 3.6/4.0</div>
+                    <div class="summary-description">
+                        <strong>Coursework:</strong> 
+                        Artificial Intelligence, Machine Learning, Cloud Computing, 
+                        Distributed Operating Systems, Data Structures and Algorithms
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="degree">Bachelor of Engineering in Computer Science</div>
+                    <div class="institution">VNR VJIET, India</div>
+                    <div class="year">2019 – 2023</div>
+                    <div class="summary-description">
+                        <strong>Coursework:</strong> Computer Science Fundamentals, Software Design,  Software Development Life Cycle (SDLC), Object-Oriented Design
+                    </div>
+                </div>
+            </div>
+           <p style="margin-bottom: 20px;"></p>
+
+            <div class="summary-card">
+                <h3>Work Experience</h3>
+                <div class="summary-item">
+                    <div class="role">Application Developer, <span class="metric">Thoughtworks </span></div>
+                     <div class="year">Jan 2024 – July 2025</div>
+                    <div class = "summary">Built a Bill Notification system for the autopay platform using Java, Spring Boot, and Redis, enabling reliable payment reminders and improving customer payment success rates.
+                    Enhanced payment infrastructure by resolving production issues, optimizing APIs, and implementing event-driven architecture—reducing latency, improving responsiveness, and increasing overall system efficiency.</div>
+                    
+                </div>
+                <div class="summary-item">
+                    <div class="role">Software Engineer, <span class="metric">KAS Commerce</span></div>
+                    <div class="year">Oct 2024 – Jan 2025</div>
+                    <div class="summary">Optimized payment and authentication workflows by improving Stripe API performance and implementing Amazon OAuth, reducing transaction latency and accelerating secure user onboarding.
+                    Developed interactive business intelligence dashboards using React and PostgreSQL, enabling faster data-driven decisions and increasing platform engagement</div>
+                </div>
+                <div class="summary-item">
+                    <div class="role">Software Engineer Intern, <span class="metric">Amazon</span></div>
+                    <div class="year">Jan 2023 – Jun 2023</div>
+                    <div class="summary">Designed a shadow testing environment using Java, Spring Boot, and AWS, improving code coverage and maintainability while reducing technical debt.
+                    Enhanced system reliability by refactoring legacy code and implementing robust unit and integration tests with JUnit, Mockito, and EasyMock, increasing test coverage and reducing post-deployment bugs.</div>
+                </div>
+            </div>
+        <p style="margin-bottom: 20px;"></p>
+
+         <!-- SKILLS -->
+        <div class="skills-section">
+            <h2 class="section-header">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming </h4>
+                    <p>Python, C, C++, Java, JavaScript, TypeScript, C#, PyTorch</p>
+                </div>
+                <div class="skill-category">
+                    <h4>AI / LLM</h4>
+                    <p>LangChain, LangGraph, RAG, Prompt Engineering, GPT-4, DALL-E, Hugging Face Transformers</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h4>DB & Messaging</h4>
+                    <p>MySQL, PostgreSQL, MongoDB, Redis, SQL</p>
+                </div>
+                <div class="skill-category">
+                    <h4>Cloud & DevOps</h4>
+                    <p>AWS (EC2, Lambda, S3), Docker, Kubernetes, Jenkins, Git, Linux</p>
+                </div>
+            </div>
+        </div>
+           
+        <!-- PROJECTS -->
+        <div class="timeline-container">
+            <h2 class="section-header">Projects</h2>
+            <div class="timeline">
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Dec 2025</p>
+                    <h2>Custom GPT Builder</h2>
+                    <p>Implemented a GPT-style language model from scratch using PyTorch, featuring Byte Pair Encoding (BPE) tokenization, multi-head self-attention & transformer blocks, positional embeddings, and autoregressive training & inference pipelines. Built for a deep, hands-on understanding of transformer internals without relying on high-level abstractions.</p>
+                    <div class="project-images">
+                        <div class="project-image"><img src="projects/transformer.png" alt="LiDAR point cloud projection"></div>
+                        <div class="project-image"><img src="projects/decoder.png" alt="Sensor calibration results"></div>
+                    </div>
+                    <a href="https://github.com/supraja777/GPT-From-Scratch" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Nov 2025</p>
+                    <h2>All RAG Techniques</h2>
+                    <p>Engineered scalable Retrieval-Augmented Generation (RAG) pipelines, incorporating dense embeddings & vector search, semantic chunking, query rewriting & reranking, and contextual compression. Focused on enhancing retrieval quality and reasoning accuracy in LLM systems.</p>
+                    <div class="project-images">
+                        <div class="project-image"><img src="projects/rag-1.png" alt="Robot navigation simulation"></div>
+                        <div class="project-image"><img src="projects/rag-2.png" alt="Robot navigation simulation"></div>
+                        
+                    </div>
+                    <a href="https://github.com/supraja777/All-RAG-Techniques" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+
+                <div class="timeline-section">
+                    <div class="timeline-marker"></div>
+                    <p class="period">Nov 2025</p>
+                    <h2>AI Code Polisher</h2>
+                    <p>Developed an intelligent multi-agent Python system that automatically refactors, documents, secures, and deploys codebases. Powered by Groq and Llama 3, it scans projects to enhance readability, maintainability, and security, streamlining the software development workflow.</p>
+                    <div class="project-images">
+                        <div class="project-image"><img src="projects/code-polisher-1.png" alt="UR5 trajectory execution"></div>
+                        <div class="project-image"><img src="projects/code-polisher-2.png" alt="UR5 trajectory execution"></div>
+                    </div>
+                    <a href="https://github.com/supraja777/ai-code-polisher" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CONTACT -->
+        <div class="contact-section">
+            <h2>Get In Touch</h2>
+            <div class="contact-items">
+                <div class="contact-item">
+                    <span>Email</span>
+                    <a href="mailto:suprajasrikanth872@gmail.com">suprajasrikanth872@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/suprajasrikanth/" target="_blank">https://www.linkedin.com/in/suprajasrikanth/</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
